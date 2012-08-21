@@ -1,2 +1,3 @@
 #@@@ Ignoring * so we don't get random homedir crap in the repo's git status
-# If you don't like having this here, use a local (untracked!) .git/info/exclude*
+# If you don't like having this here, use a local (untracked!) .git/info/exclude
+*

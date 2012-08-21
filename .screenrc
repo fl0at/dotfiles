@@ -1,0 +1,26 @@
+# Scott Paeth's screenrc -- http://github.com/fl0at/dotfiles
+
+startup_message off
+#chdir # go to home dir
+vbell off
+defscrollback 10000
+defutf8 on
+defmonitor on
+encoding utf-8
+#altscreen on # for vim rendering in a clearable screen # causing issues with manpage piping
+
+# Just show the darn hardstatus!
+hardstatus string "%h" # use %H as well if you need the hostname
+
+# Minimal caption: Blue, numbered window tabs, right-aligned green clock
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %=%{kG}%C%A"
+
+# TODO: duplicate RHEL's "remove stupid keybindings" sections
+
+######### From James Bothe at Rackforce:
+# Blue top taskbar: window number, hardstatus; right aligned status, time
+# Tarted up bottom taskbar: hostname; center-aligned numbered/statused window tabs; right-aligned dd/mm and time
+
+#caption always "%{= bb}%{+b w}%n %h %=%t %c"
+#hardstatus alwayslastline
+#hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'

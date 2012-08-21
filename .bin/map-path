@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -z "$*" ]
+then
+	echo -e "usage: $0 path [[cmd] [arg1] ...]\n\nbreak apart and recursively call directory portions of a path, running [cmd] or 'ls -lad' if unspecified"; exit 64 #EX_USAGE
+fi
+
+TREE=`readlink -f $1`
+shift
+CMD=$@
+
+(while [ "$TREE" != "/" ]
+do
+	${CMD:-ls -lad --width=80} $TREE
+	TREE=`dirname $TREE`
+done)|tac
+
+exit 0

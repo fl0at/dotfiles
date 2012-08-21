@@ -1,0 +1,14 @@
+# Scott Paeth's totally awesome .nethackrc -- http://github.com/fl0at/dotfiles
+OPTIONS=pickup_types:$"?+!=/
+#OPTIONS=autodig
+OPTIONS=autoquiver
+OPTIONS=color
+OPTIONS=hilite_pet
+OPTIONS=lit_corridor
+OPTIONS=pushweapon
+OPTIONS=showexp
+OPTIONS=time
+OPTIONS=mail
+OPTIONS=fruit:lemon
+OPTIONS=msghistory:35
+OPTIONS=windowtype:tty # default to tty irrespective of X11 being compiled in

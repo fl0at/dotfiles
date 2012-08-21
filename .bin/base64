@@ -1,0 +1,15 @@
+#!/bin/sh
+# Coreutils' base64 is good, but this allows for # base64 SMTP_Password
+set -e
+
+if [ ! -z "$*" ]; then
+	echo '$* = ' "$*"
+	echo -n "$*" | /usr/bin/base64
+else
+	if [ -t 0 ]; then # check if stdin
+		echo "usage: $0 [string1, string2, ...], or pipe in a file"
+		exit 64
+	fi
+	/usr/bin/base64 < /dev/stdin
+fi
+

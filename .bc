@@ -1,0 +1,14 @@
+/* Common `aliases' for use with filesize or time calculations. Oughta be straightforward enough... ;) */
+
+s=1
+min=60
+hour=60
+day=24
+month=30
+year=(365+(97/400)) # leap years bro
+
+k=1024
+m=k*k
+g=m*k
+t=g*k
+

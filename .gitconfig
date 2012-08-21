@@ -1,0 +1,14 @@
+[user]
+	email = scott_karana@hotmail.com
+	name = Scott Paeth
+[core]
+	excludesfile = ~/.gitignore_global
+
+[color]
+	ui = auto
+
+[alias]
+	lg = log --graph --pretty=oneline --abbrev-commit
+	st = status
+
+# TODO: set init.templatedir with my commit-msg?

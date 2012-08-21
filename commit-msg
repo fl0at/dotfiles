@@ -1,0 +1,31 @@
+#!/bin/sh
+# Makes sure the commit summary is 50 characters or less, and the body 72 or less
+# Install into .git/hooks, make sure it's executable
+
+FIRSTLINE=true
+SECONDLINE=false
+ONWARDS=false
+
+while read line
+do
+	if $FIRSTLINE; then
+		FIRSTLINE=false
+		SECONDLINE=true
+		if [ `echo -n $line | wc -c` -gt 50 ]; then
+			echo "Aborting commit due to overly long summary; exceeds 50 characters" > /dev/stderr
+			exit 128
+		fi
+	elif $SECONDLINE; then
+		SECONDLINE=false
+		ONWARDS=true
+		if [ `echo -n $line | wc -c` -gt 1 ]; then
+			echo "Aborting commit due to improperly delimited body." > /dev/stderr
+			exit 128
+		fi
+	elif $ONWARDS; then
+		if [ `echo -n $line | wc -c` -gt 72 ]; then
+			echo "Aborting due to body text exceeding 72 character limit." > /dev/stderr
+			exit 128
+		fi
+	fi
+done < $1

@@ -8,7 +8,7 @@
 	ui = auto
 
 [alias]
-	lg = log --graph --pretty=oneline --abbrev-commit
+	lg = log --graph --oneline --decorate
 	st = status
 
 # TODO: set init.templatedir with my commit-msg?

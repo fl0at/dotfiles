@@ -23,7 +23,6 @@ I would recommend vetting these files, but if you want to clone in-place in your
 ```bash
 cd ~; git init
 git remote add origin http://github.com/fl0at/dotfiles.git
-git branch --set-upstream master origin/master
 git pull origin master
 ```
 

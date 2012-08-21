@@ -37,13 +37,13 @@ For example, I like my shells to warn me of background screens/tmuxes when I fir
 
 There is a .gitignore with a straight wildcard, so your whole homedir doesn't show up as untracked.
 
-I also use a standard ANSI/VTxx escape sequence to force PuTTY windows to UTF-8 mode. This should also work on Unicode-capable xterms, but your mileage may vary, as I haven't tested it.
+I also use a standard ANSI/VTxx escape sequence to force PuTTY windows to UTF-8 mode. This should also work on Unicode-capable xterms, but your mileage may vary, as I haven't tested it.  
 I know I can just set that encoding manually in PuTTY, but if I'm using a fresh copy of PuTTY at a friend's house, for example... It's easy to forget, only to annoy you when you get accented characters instead of quotes in a manpage.
 
 License
 -------
 
-Unless otherwise specified, (c) Scott Paeth, 2012
+Unless otherwise specified, (c) Scott Paeth, 2012  
 No rights reserved. I'd appreciate a namedrop though.
 
 Sources cited where possible. Main source of inspiration was rtomayko's dotfiles, but ryanb and many others weighed in heavily.

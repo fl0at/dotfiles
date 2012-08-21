@@ -14,6 +14,7 @@ To use this as a drop-in set of dotfiles, you'll likely need to tweak to taste:
  * .gitconfig's email and name
  * .hgrc's email and name
  * ~/.bin's location and PATH, if you don't dig that spot
+
 You, uh, probably want to delete this README as well. `:D`
 
 There is also a commit-msg file. If installed in .git/hooks, it'll prevent commits with long summaries (>50chars) or bodies (>72chars), which are unfriendly to email subjects/bodies, github, etc.

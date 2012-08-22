@@ -115,7 +115,7 @@ multiplex-login() {
 		#That's only possible when SCREENDIR is set, or the build uses ~/.screen.
 		#In any case, this is as good as I can get. Tolerant of spaces, ()s, etc.
 		[ -z $SCREENDIR ] && SCREENDIR=$(screen -ls | grep 'S-' | sed -e 's@[^/]*\(/.*\)S-.*$@\1@')
-		if [ $(ls -A $SCREENDIR/S-`whoami` 2> /dev/null) ]; then
+		if [ "$(ls -A $SCREENDIR/S-`whoami` 2> /dev/null)" ]; then
 			echo -n "There is a wild Screen about. "
 			quote
 		fi

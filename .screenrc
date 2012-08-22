@@ -10,7 +10,7 @@ encoding utf-8
 #altscreen on # for vim rendering in a clearable screen # causing issues with manpage piping
 
 # Just show the darn hardstatus!
-hardstatus string "%h" # use %H as well if you need the hostname
+hardstatus off
 
 # Minimal caption: Blue, numbered window tabs, right-aligned green clock
 caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %=%{kG}%C%A"

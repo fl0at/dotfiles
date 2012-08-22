@@ -3,7 +3,8 @@ Dotfiles
 
 Nothing special about this repository: it intends to live in ~, with no symlink or install-script trickery.
 
-Where possible, I attempt to be as compatible as possible. Not only do I aim for POSIX/bourne compatibility, but for cross-platform compatibility. This should be just as happy on OpenBSD, Cygwin, or Mac OS X as anywhere else. Feel free to open pull requests for added functionality: even if I live in Linux, I want rich support for other platforms. This includes other editors, shells, and the like.
+Where possible, I attempt to be as compatible as possible. Not only do I aim for POSIX/bourne compatibility, but for cross-platform compatibility. This should be just as happy on OpenBSD, Cygwin, or Mac OS X as anywhere else. Feel free to open pull requests for added functionality: even if I live in Linux, I want rich support for other platforms. This includes other editors, shells, tmux, and the like.
+
 Caveats are noted, and all reasonable attempts are made to test an environment's functionality before enabling it.
 
 Installation

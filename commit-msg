@@ -1,31 +1,40 @@
 #!/bin/sh
+set -e
 # Makes sure the commit summary is 50 characters or less, and the body 72 or less
 # Install into .git/hooks, make sure it's executable
 
+COMMITMSG="$1"
 FIRSTLINE=true
 SECONDLINE=false
 ONWARDS=false
 
+diefrom() {
+	COMMIT_TEMP=`mktemp ./commit-msg.XXXXX`
+	cp $COMMITMSG $COMMIT_TEMP
+	echo "Aborting commit due to $*" > /dev/stderr
+	echo "Failed commit message saved in $COMMIT_TEMP" > /dev/stderr
+	exit 1
+}
+
 while read line
 do
-	if $FIRSTLINE; then
+	if echo $line | grep -q "^#"; # Git comments MUST be first character
+	then continue; fi
+	if $FIRSTLINE;
+	then
 		FIRSTLINE=false
 		SECONDLINE=true
-		if [ `echo -n $line | wc -c` -gt 50 ]; then
-			echo "Aborting commit due to overly long summary; exceeds 50 characters" > /dev/stderr
-			exit 128
-		fi
-	elif $SECONDLINE; then
+		 [ `echo -n $line | wc -c` -gt 50 ] && \
+		 	diefrom "summary text exceeding 50 characters."
+	elif $SECONDLINE;
+	then
 		SECONDLINE=false
 		ONWARDS=true
-		if [ `echo -n $line | wc -c` -gt 1 ]; then
-			echo "Aborting commit due to improperly delimited body." > /dev/stderr
-			exit 128
-		fi
-	elif $ONWARDS; then
-		if [ `echo -n $line | wc -c` -gt 72 ]; then
-			echo "Aborting due to body text exceeding 72 character limit." > /dev/stderr
-			exit 128
-		fi
+		[ `echo -n $line | wc -c` -gt 1 ] && \
+			diefrom "improperly delimited or empty body."
+	elif $ONWARDS;
+	then
+		[ `echo -n $line | wc -c` -gt 72 ] && \
+			diefrom "body text exceeding 72 character limit."
 	fi
-done < $1
+done < "$COMMITMSG"

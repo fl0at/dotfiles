@@ -3,12 +3,13 @@ Dotfiles
 
 Nothing special about this repository: it intends to live in ~, with no symlink or install-script trickery.
 
-Where possible, I attempt to be as compatible as possible. Not only do I aim for POSIX/bourne compatibility, but for cross-platform compatibility. This should be just as happy on OpenBSD, Cygwin, or Mac OS X as anywhere else. Feel free to open pull requests for added functionality: even if I live in Linux, I want rich support for other platforms. This includes other editors, shells, tmux, and the like.
+Where possible, I attempt to be as compatible and low-impact as possible. Not only do I aim for POSIX/bourne compatibility and respect of existing environment variables, but also for cross-platform compatibility. This should be just as happy on OpenBSD, Cygwin, or Mac OS X as anywhere else  
+Feel free to open pull requests for added functionality: even if I live in Linux, I want rich support for other platforms. This includes other editors, shells, tmux, and the like.
 
 Caveats are noted, and all reasonable attempts are made to test an environment's functionality before enabling it.
 
 Installation
-------------
+============
 
 To use this as a drop-in set of dotfiles, you'll likely need to tweak to taste:
  * .bashrc's PATH, EMAIL, LC_ALL, and LANG variables, and aliases
@@ -30,7 +31,7 @@ git pull origin master
 
 
 Quirkiness
-----------
+==========
 
 Beyond everything mentioned above, there are also a few places where my own idioms might weird you out. They are preceded by a comment containing _`@@@`_.
 
@@ -42,7 +43,7 @@ I also use a standard ANSI/VTxx escape sequence to force PuTTY windows to UTF-8 
 I know I can just set that encoding manually in PuTTY, but if I'm using a fresh copy of PuTTY at a friend's house, for example... It's easy to forget, only to annoy you when you get accented characters instead of quotes in a manpage.
 
 License
--------
+=======
 
 Unless otherwise specified, (c) Scott Paeth, 2012  
 No rights reserved. I'd appreciate a namedrop though.

@@ -4,7 +4,8 @@
 " Lots is also from from Steve Losh and ryanb:
 " 	https://github.com/ryanb/dotfiles
 " 	https://bitbucket.org/sjl/dotfiles
-" 	  (and see http://stevelosh.com/blog/2010/09/coming-home-to-vim/)
+" 		(and see http://stevelosh.com/blog/2010/09/coming-home-to-vim/)
+"	https://github.com/spf13/spf13-vim/blob/3.0/.vimrc
 
 " TODO: incorporate this resizer?
 " http://www.scarpa.name/2011/04/06/terminal-vim-resizing/
@@ -23,6 +24,7 @@ set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
+set scrolloff=1		" minimum lines to keep above and below cursor
  
 " Unset search variable during Ctrl-L refresh
 " That is, turns off hlsearch's highlighting when done, without disabling it
@@ -34,7 +36,7 @@ if &t_Co > 2 || has("gui_running")
 	set background=dark
 	set hlsearch
 	if &t_Co >= 256
-		silent! colorscheme jellybeans " TODO: or lucius, or xoria256...
+		silent! colorscheme xoria256 " TODO: or lucius, or jellybeans...
 	else
 		colorscheme desert
 	endif

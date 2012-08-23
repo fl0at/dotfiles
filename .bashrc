@@ -38,7 +38,6 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # Quick-access aliases
-alias ls='ls --color=auto'
 alias la='ls -la'
 alias ll='ls -l'
 alias lt='ls -lt'
@@ -51,9 +50,12 @@ alias beep="echo -ne '\a'"
 alias yy-mm-dd="date --iso-8601"
 alias fulldate="date --iso-8601=seconds"
 alias sr="screen -d -R" # include -p = to see windowlist on reconnect
+alias tma="tmux attach"
+# TODO: "resume tmux or screen session, if existing, or create new"?
 alias h='fc -l'
+alias ls='ls --color=auto'
 alias grep="grep --colour=auto"
-#alias number="screen -X number"
+# TODO: `number` command that changes tmux/screen window's number?
 
 # If `gem man` exists, alias over regular `man`
 ruby -r rubygems -e 'begin exit(Gem.available?("gem-man")) rescue exit(Gem::Specification.find_all_by_name("rails").empty?) end' &> /dev/null && alias man="gem man -s"

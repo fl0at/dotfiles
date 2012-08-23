@@ -8,6 +8,8 @@ defutf8 on
 defmonitor on
 encoding utf-8
 #altscreen on # for vim rendering in a clearable screen # causing issues with manpage piping
+#@@@ Kludge for stupidity
+term xterm-256color
 
 # Just show the real darn hardstatus!
 hardstatus off

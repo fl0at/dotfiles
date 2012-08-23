@@ -53,6 +53,8 @@ alias sr="screen -d -R" # include -p = to see windowlist on reconnect
 alias tma="tmux attach"
 # TODO: "resume tmux or screen session, if existing, or create new"?
 alias h='fc -l'
+#@@@ MASSIVE KLUDGE
+alias tmux="tmux -2"
 alias ls='ls --color=auto'
 alias grep="grep --colour=auto"
 # TODO: `number` command that changes tmux/screen window's number?

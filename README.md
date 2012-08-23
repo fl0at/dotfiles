@@ -43,6 +43,40 @@ There is a .gitignore with a straight wildcard, so your whole homedir doesn't sh
 I also use a standard ANSI/VTxx escape sequence to force PuTTY windows to UTF-8 mode. This should also work on Unicode-capable xterms, but your mileage may vary, as I haven't tested it.  
 I know I can just set that encoding manually in PuTTY, but if I'm using a fresh copy of PuTTY at a friend's house, for example... It's easy to forget, only to annoy you when you get accented characters instead of quotes in a manpage.
 
+And then there's color detection:
+
+Terminfo and Colors
+===================
+
+My default client is PuTTY. It has 256-color mode enabled by default, but annoyingly, it presents itself as straight xterm.
+Thus, all programs assume it's only capable of 8 colors.
+Not a big deal: change it to xterm-256color, and reap the benefits, right?
+
+_WRONG_. It works, but even though tmux and screen will render in 256-color, their contained windows are presented PTYs as "screen", another 8-color terminfo.
+
+Again, no big deal, right? Set your multiplexer to present screen-256color, and you're golden. And since both multiplxers are smart enough to downscale colors if you connect to them with an 8-color terminal, it's not "forcing" anything that'll break or look ugly.
+
+Oh wait, guess what: RHEL/CentOS 5 doesn't ship with screen-256color, so you get terminfo errors, and everything inside your multiplexer falls back to 8-colour.
+Fuck you, Red Hat. Fuck you.  
+
+This leaves you with three options:
+
+ # Custom terminfo files (TODO: cover that here)
+ # Give up and force 256-colors on a per-program basis
+ # Force screen/tmux to use xterm-256color, against their developer's recommendations.[1][01]
+ 
+[01](http://tmux.svn.sourceforge.net/viewvc/tmux/trunk/FAQ)
+
+Use `infocmp | grep color` or `tput colors` to check the alleged capabilities of a terminal.
+
+If you choose #2, here is your code:
+
+```vimscript
+if match($TERM, "screen") !=-1
+	set t_Co=256
+endif
+```
+
 License
 =======
 

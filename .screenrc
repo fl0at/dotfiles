@@ -9,7 +9,7 @@ defmonitor on
 encoding utf-8
 #altscreen on # for vim rendering in a clearable screen # causing issues with manpage piping
 
-# Just show the darn hardstatus!
+# Just show the real darn hardstatus!
 hardstatus off
 
 # Minimal caption: Blue, numbered window tabs, right-aligned green clock

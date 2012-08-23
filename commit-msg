@@ -26,17 +26,16 @@ do
 	then
 		FIRSTLINE=false
 		SECONDLINE=true
-		 [ `echo -n "$line" | wc -c` -gt 50 ] && \
-		 	diefrom "summary text exceeding 50 characters."
+		[ `echo -n "$line" | wc -c` -gt 50 ] && diefrom "summary text exceeding 50 characters."
 	elif $SECONDLINE;
 	then
 		SECONDLINE=false
 		ONWARDS=true
-		[ `echo -n "$line" | wc -c` -gt 1 ] && \
-			diefrom "improperly delimited or empty body."
+		[ `echo -n "$line" | wc -c` -gt 1 ] && diefrom "improperly delimited or empty body."
 	elif $ONWARDS;
 	then
-		[ `echo -n "$line" | wc -c` -gt 72 ] && \
-			diefrom "body text exceeding 72 character limit."
+		[ `echo -n "$line" | wc -c` -gt 72 ] && diefrom "body text exceeding 72 character limit."
 	fi
 done < "$COMMITMSG"
+
+exit 0

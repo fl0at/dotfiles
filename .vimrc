@@ -16,6 +16,8 @@ set backspace=indent,eol,start
 filetype plugin indent on
 autocmd FileType html setl sw=2 sts=2 ts=2 et " two-space "tabs" for html
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+" TODO: portable "file changed" test. The below doesn't work:
+" autocmd FileChangedShell * echo "Warning: File changed on disk"
 set nobackup
 set nowritebackup
 set shortmess=a		" Always show the short message on the bottom!

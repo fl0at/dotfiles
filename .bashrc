@@ -154,3 +154,6 @@ if [ "$INTERACTIVE" ]; then
 
 	multiplex-login #@@@ As above, warn of screen/tmux with a silly quote
 fi
+
+# TODO: deal with $TERM and 256color and screen/tmux (and [re]move UTF-8 SGR?)
+# I can alias in $TERM, or point to per-$TERM config that sources main config

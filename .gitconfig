@@ -11,4 +11,10 @@
 	lg = log --graph --oneline --decorate
 	st = status
 
+[diff]
+	renames = copies
+
+[push]
+	default = simple
+
 # TODO: set init.templatedir with my commit-msg?

@@ -1,4 +1,6 @@
 #!/bin/bash
+# github.com/fl0at/dotfiles
+# run a command (or ls, if not specified) recursively on directory components
 
 if [ -z "$*" ]
 then

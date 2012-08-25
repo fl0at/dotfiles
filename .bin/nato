@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# Echo the NATO phoenetic alphabet, or convert an input string to it
 
 # TODO: one line per word mode?
 

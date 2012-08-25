@@ -1,5 +1,6 @@
 #!/bin/sh
-# Coreutils' base64 is good, but this allows for # base64 SMTP_Password
+# github.com/fl0at/dotfiles
+# Coreutils' base64 is good, but this allows for `base64 "password"`
 set -e
 
 if [ ! -z "$*" ]; then

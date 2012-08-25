@@ -50,8 +50,7 @@ alias beep="echo -ne '\a'"
 alias yy-mm-dd="date --iso-8601"
 alias fulldate="date --iso-8601=seconds"
 alias sr="screen -d -R" # include -p = to see windowlist on reconnect
-alias tma="tmux attach"
-# TODO: "resume tmux or screen session, if existing, or create new"?
+alias tm="tmux attach || tmux"
 alias h='fc -l'
 alias ls='ls --color=auto'
 alias grep="grep --colour=auto"

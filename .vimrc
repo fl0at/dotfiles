@@ -71,6 +71,7 @@ function Resizer () " TODO: test this function more thoroughly
 endfunction
 
 " Run the Resizer on screen size changes.
+" TODO: fix split sizes on window resize (Ctrl-W = helps)
 au VimResized * :call Resizer()
 call Resizer()
 

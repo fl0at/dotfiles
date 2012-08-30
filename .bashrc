@@ -66,6 +66,7 @@ alias sl=ls
 alias mroe=more
 alias moer=more
 alias ..="cd .."
+alias cd..="cd .."
 
 # "You so stupid!" aliases
 #alias :w='echo NOT VI'

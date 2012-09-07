@@ -47,14 +47,15 @@ alias more="less" # because muscle memory >> less/lv
 # Sugar aliases
 alias bc='bc -il ~/.bc'
 alias beep="echo -ne '\a'"
-alias yy-mm-dd="date --iso-8601"
+alias yy-mm-dd="date --iso-8601" # TODO: see if GNU or POSIX
 alias fulldate="date --iso-8601=seconds"
 alias sr="screen -d -R" # include -p = to see windowlist on reconnect
 alias tm="tmux attach || tmux"
-alias h='fc -l'
-alias ls='ls --color=auto'
-alias grep="grep --colour=auto"
+alias h='fc -l' # TODO: see if posix
+alias ls='ls --color=auto' # TODO: derp. Breaks on OS X and FreeBSD
+alias grep="grep --colour=auto" # TODO: likely breaks on FreeBSD
 # TODO: `number` command that changes tmux/screen window's number?
+alias tf="tail -n0 -f" # TODO: see if GNU only
 
 # If `gem man` exists, alias over regular `man`
 ruby -r rubygems -e 'begin exit(Gem.available?("gem-man")) rescue exit(Gem::Specification.find_all_by_name("rails").empty?) end' &> /dev/null && alias man="gem man -s"

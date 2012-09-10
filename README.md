@@ -77,6 +77,11 @@ if match($TERM, "screen") !=-1
 endif
 ```
 
+Also TODO:
+                silent! colorscheme xoria256 " TODO: or lucius, or jellybeans...
+
+Make sure that TODO is highly visible, even in degraded terminals (eg, 256-color multiplexer within a poor terminal emulator)
+
 License
 =======
 

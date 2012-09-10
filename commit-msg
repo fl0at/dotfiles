@@ -5,6 +5,8 @@ set -e
 
 # TODO: work around the fact that using git commit -F commit-msg.XXXX will _commit the default comments_ as part of the commit. OW.
 
+# TODO: use printf instead of echo, to use --? Is it portable? Likewise for the rest.
+
 COMMITMSG="$1"
 FIRSTLINE=true
 SECONDLINE=false

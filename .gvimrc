@@ -7,5 +7,5 @@ if has('mac')
 	set gfn=Menlo:h14
 endif
 
-silent! colorscheme solarized " Turns out it's hard to test: just do it
-set anti               " antialiasing
+silent! colorscheme solarized " It's hard to test if it exists: just load it
+set anti " antialiasing

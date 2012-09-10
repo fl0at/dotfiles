@@ -4,9 +4,9 @@
 
 [ -f /etc/bashrc ] && . /etc/bashrc
 
-#set -o notify # notify of bg job completion immediately
-set -o noclobber
+set -o noclobber # don't allow interactive pipes to overwrite unless using |>
 umask 0007 # since I'm in the apache group...
+#set -o notify # notify of bg job completion immediately
 
 # ----------------------------------------------------------------------
 # Environment Variables
@@ -24,7 +24,7 @@ EDITOR=vim
 PAGER=less
 export EMAIL EDITOR PAGER
 
-export HISTIGNORE="&:  *:*root@*"  # Hide root@, duplicate commands, and any preceded by two spaces
+export HISTIGNORE="&:  *:*root@*"  # Hide any command history containing root@, duplicate commands, or any preceded by two spaces (ninja mode?)
 export HISTSIZE=10000
 #$TMOUT=n variable ends a bash session after n seconds of idling
 
@@ -41,23 +41,21 @@ alias rm='rm -i'
 alias la='ls -la'
 alias ll='ls -l'
 alias lt='ls -lt'
-alias tf="tail -n0 -f"
-alias more="less" # because muscle memory >> less/lv
+alias more="less" # because muscle memory wins...
 
 # Sugar aliases
-alias bc='bc -il ~/.bc'
+alias bc='bc -il ~/.bc' # use preset useful variables, see .bc
 alias beep="echo -ne '\a'"
-alias yy-mm-dd="date --iso-8601" # TODO: see if GNU or POSIX
+alias yyyy-mm-dd="date --iso-8601" # outputs a handy timestamp for log filenames, etc " TODO: see if GNU or POSIX compliant
 alias fulldate="date --iso-8601=seconds"
-alias sr="screen -d -R" # include -p = to see windowlist on reconnect
+alias sr="screen -d -R" # gimme a Screen! Existing or new, whichever. Add `-p =' to see windowlist on reconnect
 alias tm="tmux attach || tmux"
 alias h='fc -l' # TODO: see if posix
 alias ls='ls --color=auto' # TODO: derp. Breaks on OS X and FreeBSD
 alias grep="grep --colour=auto" # TODO: likely breaks on FreeBSD
-# TODO: `number` command that changes tmux/screen window's number?
 alias tf="tail -n0 -f" # TODO: see if GNU only
 
-# If `gem man` exists, alias over regular `man`
+# If `gem man` exists, alias overtop of regular `man`, since it passes through
 ruby -r rubygems -e 'begin exit(Gem.available?("gem-man")) rescue exit(Gem::Specification.find_all_by_name("rails").empty?) end' &> /dev/null && alias man="gem man -s"
 
 # Typo aliases
@@ -81,6 +79,8 @@ alias cd..="cd .."
 
 # NOTE: \e is a bashism. Use \033 for additional compatibility.
 # I could use tput, but that depends on the reported $TERM...
+
+# TODO: switch echo for printf, since it doesn't accept -- portably?
 
 # Set window title in GNU Screen
 title() {
@@ -128,6 +128,8 @@ multiplex-login() {
 		fi
 	fi
 }
+
+# TODO: `number` command/function that changes tmux/screen window's number?
 
 # ----------------------------------------------------------------------
 # Interactivity mode is kicking in, aww yeah

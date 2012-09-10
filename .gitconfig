@@ -12,6 +12,6 @@
 	st = status
 
 [diff]
-	renames = copies
+	renames = copies # Figure out copies as well as renames for dedup
 
 # TODO: set init.templatedir with my commit-msg?

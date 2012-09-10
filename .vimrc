@@ -20,13 +20,13 @@ autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 " autocmd FileChangedShell * echo "Warning: File changed on disk"
 set nobackup
 set nowritebackup
-set shortmess=a		" Always show the short message on the bottom!
-set mouse=		" Mouse support in PuTTY is a bit disconcerting.
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-set scrolloff=1		" minimum lines to keep above and below cursor
+set shortmess=a " Always show the short message on the bottom!
+set mouse= " @@@ Disabled: mouse support in PuTTY is a bit disconcerting to me.
+set history=50 " keep 50 lines of command line history
+set ruler " show the cursor position all the time
+set showcmd " display incomplete commands
+set incsearch " do incremental/live searching
+set scrolloff=1	" minimum lines to keep above and below cursor
  
 " Unset search variable during Ctrl-L refresh
 " That is, turns off hlsearch's highlighting when done, without disabling it
@@ -47,7 +47,7 @@ endif
 " Line numbers: show relative in Normal mode and absolute in Edit mode
 " Credit to http://news.ycombinator.com/item?id=4172099
 " https://gist.github.com/3012145
-function Resizer () " TODO: test this function more thoroughly
+function Resizer () " TODO: test this more thoroughly in different versions
 	if &columns>120
 		set number " TODO: toggle only if on when we started
 		if version>=703

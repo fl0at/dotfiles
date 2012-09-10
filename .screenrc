@@ -1,13 +1,13 @@
 # Scott Paeth's screenrc -- http://github.com/fl0at/dotfiles
 
 startup_message off
-#chdir # go to home dir
+#chdir # start shells in home dir rather than cwd
 vbell off
 defscrollback 10000
 defutf8 on
 defmonitor on
 encoding utf-8
-#altscreen on # for vim rendering in a clearable screen # causing issues with manpage piping
+#altscreen on # for vim rendering in a clearable screen # causing issues with manpage piping on CentOS 5
 
 # Just show the real darn hardstatus!
 hardstatus off

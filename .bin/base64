@@ -3,6 +3,8 @@
 # Coreutils' base64 is good, but this allows for `base64 "password"`
 set -e
 
+# TODO: use printf instead of echo, to use --? Is it portable?
+
 if [ ! -z "$*" ]; then
 	echo '$* = ' "$*"
 	echo -n "$*" | /usr/bin/base64

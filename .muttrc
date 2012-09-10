@@ -1,4 +1,4 @@
-# Maildir support: mbox is the usual default
+# Maildir support instead of mbox, the usual default
 set mbox_type=Maildir
 set folder="~/Maildir"
 set mask="!^\\.[^.]"

@@ -2,6 +2,8 @@
 # github.com/fl0at/dotfiles
 # run a command (or ls, if not specified) recursively on directory components
 
+# TODO: use printf instead of echo, to use --? Is it portable?
+
 if [ -z "$*" ]
 then
 	echo -e "usage: $0 path [[cmd] [arg1] ...]\n\nbreak apart and recursively call directory portions of a path, running [cmd] or 'ls -lad' if unspecified"; exit 64 #EX_USAGE
@@ -13,7 +15,7 @@ CMD=$@
 
 (while [ "$TREE" != "/" ]
 do
-	${CMD:-ls -lad --width=80} $TREE
+	${CMD:-ls -lad --width=80} $TREE # TODO: -- argument? Is it portable?
 	TREE=`dirname $TREE`
 done)|tac
 

@@ -153,6 +153,7 @@ if [ "$INTERACTIVE" ]; then
 	#    http://gitready.com/advanced/2009/01/23/bash-git-status.html
 	#    http://henrik.nyh.se/2008/12/git-dirty-prompt
 	#    https://gist.github.com/31631
+	#    http://superuser.com/questions/31744/how-to-get-git-completion-bash-to-work-on-mac-os-x
 	export LC_ALL LANG PS1
 
 	multiplex-login #@@@ As above, warn of screen/tmux with a silly quote

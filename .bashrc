@@ -25,7 +25,7 @@ PAGER=less
 export EMAIL EDITOR PAGER
 
 export HISTIGNORE="&:  *:*root@*"  # Hide any command history containing root@, duplicate commands, or any preceded by two spaces (ninja mode?)
-export HISTSIZE=10000
+export HISTSIZE=102400
 #$TMOUT=n variable ends a bash session after n seconds of idling
 
 # ----------------------------------------------------------------------
@@ -42,17 +42,18 @@ alias la='ls -la'
 alias ll='ls -l'
 alias lt='ls -lt'
 alias more="less" # because muscle memory wins...
+alias vi=vim
 
 # Sugar aliases
 alias bc='bc -il ~/.bc' # use preset useful variables, see .bc
 alias beep="echo -ne '\a'"
 alias yyyy-mm-dd="date +'%Y-%m-%d'" # outputs a handy datestamp for log filenames, etc
-alias fulldate="date +'%Y-%m-%dT%H:%M:%S'" # Likewise, but timestamped too
+alias fulldate="date +'%Y-%m-%dT%H:%M:%S%z'" # Likewise, but timestamped too. # Note: while %z (timezone offset) is valid for POSIX's strftime(), it is not technically required for the date command. YMMV
 alias sr="screen -d -R" # gimme a Screen! Existing or new, whichever. Add `-p =' to see windowlist on reconnect
 alias tm="tmux attach || tmux"
 alias h='fc -l'
-alias ls='ls --color=auto' # TODO: derp. Breaks on OS X and FreeBSD
-alias grep="grep --colour=auto" # TODO: likely breaks on FreeBSD
+alias ls='ls --color=auto' # TODO: write test to guess --color=auto or -G or nada based on return status
+alias grep="grep --colour=auto" # TODO: as above, use test to guess if --color=auto is applicable, but it looks like all modern Unix families except Solaris and OpenBSD use GNU Grep
 alias tf="tail -n 0 -f"
 
 # If `gem man` exists, alias overtop of regular `man`, since it passes through

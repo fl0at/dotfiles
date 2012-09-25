@@ -38,12 +38,14 @@ Beyond everything mentioned above, there are also a few places where my own idio
 
 For example, I like my shells to warn me of background screens/tmuxes when I first log in, and output a silly quote, too.
 
-There is a .gitignore with a pure wildcard, so your whole homedir doesn't show up as untracked.
+There is a .gitignore with an outright wildcard, so your whole homedir doesn't show up as untracked noise.
 
 I also get creeped out by vim's mouse support in terminal emulators, so that's disabled.
 
-I also use a standard ANSI/VTxx escape sequence to force terminal windows to UTF-8 mode. It works well in PuTTY, and shouldalso work on Unicode-capable xterms, but your mileage may vary, as I haven't tested that.  
+I also use a standard ANSI/VTxx escape sequence to force terminal windows to UTF-8 mode. It works well in PuTTY, and should also work on Unicode-capable xterms, but your mileage may vary, as I haven't tested that.  
 I know I can just set that encoding manually in PuTTY, but if I'm using a fresh copy of PuTTY at a friend's house, for example... It's easy to forget, only to annoy you when you get accented characters instead of quotes in a manpage.
+
+Tmux is also set to act like GNU Screen in main aspects. I understand most people do this, but I figured I'd note it just the same.
 
 License
 =======

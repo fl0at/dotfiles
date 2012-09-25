@@ -46,14 +46,14 @@ alias more="less" # because muscle memory wins...
 # Sugar aliases
 alias bc='bc -il ~/.bc' # use preset useful variables, see .bc
 alias beep="echo -ne '\a'"
-alias yyyy-mm-dd="date --iso-8601" # outputs a handy timestamp for log filenames, etc " TODO: see if GNU or POSIX compliant
-alias fulldate="date --iso-8601=seconds"
+alias yyyy-mm-dd="date +'%Y-%m-%d'" # outputs a handy datestamp for log filenames, etc
+alias fulldate="date +'%Y-%m-%dT%H:%M:%S'" # Likewise, but timestamped too
 alias sr="screen -d -R" # gimme a Screen! Existing or new, whichever. Add `-p =' to see windowlist on reconnect
 alias tm="tmux attach || tmux"
-alias h='fc -l' # TODO: see if posix
+alias h='fc -l'
 alias ls='ls --color=auto' # TODO: derp. Breaks on OS X and FreeBSD
 alias grep="grep --colour=auto" # TODO: likely breaks on FreeBSD
-alias tf="tail -n0 -f" # TODO: see if GNU only
+alias tf="tail -n 0 -f"
 
 # If `gem man` exists, alias overtop of regular `man`, since it passes through
 ruby -r rubygems -e 'begin exit(Gem.available?("gem-man")) rescue exit(Gem::Specification.find_all_by_name("rails").empty?) end' &> /dev/null && alias man="gem man -s"

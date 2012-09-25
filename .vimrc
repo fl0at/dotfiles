@@ -14,7 +14,8 @@ set nocompatible
 set autoindent
 set backspace=indent,eol,start
 filetype plugin indent on
-autocmd FileType html setl sw=2 sts=2 ts=2 et " two-space "tabs" for html
+autocmd FileType html setl sw=4 sts=4 ts=4 et " two-space "tabs" for html
+autocmd FileType css setl sw=4 sts=4 ts=4 et " two-space "tabs" for css
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 " TODO: portable "file changed" test. The below doesn't work:
 " autocmd FileChangedShell * echo "Warning: File changed on disk"

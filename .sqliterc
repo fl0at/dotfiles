@@ -1,2 +1,4 @@
+-- github.com/fl0at/dotfiles
+-- sqlite3 doesn't show headers by default, so...
 .header on
 .mode column

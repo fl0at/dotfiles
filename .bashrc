@@ -158,5 +158,7 @@ if [ "$INTERACTIVE" ]; then
 	multiplex-login #@@@ As above, warn of screen/tmux with a silly quote
 fi
 
-# TODO: deal with $TERM and 256color and screen/tmux (and [re]move UTF-8 SGR?)
-# I can alias in $TERM, or point to per-$TERM config that sources main config
+# BIG TODO: deal with unsupported $TERMs like 256color, in screen/tmux as well (and [re]move UTF-8 SGR?)
+# For screen/tmux, I can detect $TERM and pass along a settings file which sources the main .screenrc or .tmux.conf but that's ugly.
+# For shells, period, I need to properly detect if a term is supported, and fall back gracefully, rather than getting dumped.
+# TODO: I also need to find a solution for ssh client's passing $TERM along to unsuspecting servers (and unlike above, I can't rely on programmatic fallback: that is, a virgin VPS will barf on screen-256color-bce)

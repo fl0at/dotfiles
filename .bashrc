@@ -142,7 +142,7 @@ esac
 
 if [ "$INTERACTIVE" ]; then
 	if [ -z "$STY$TMUX" ]; then # If not inside a screen/tmux: raw terminal
-		echo -ne '\033%G' #@@@ Force terminal to UTF-8 # TODO: breaks on Terminal.app, ConnectBot...
+		echo -ne '\033%G' #@@@ Force terminal to UTF-8 # TODO: breaks on Terminal.app, ConnectBot, iTerm2... # TODO: use tput to check if we can at least accept the escape?
 	fi
 	bind 'set match-hidden-files off' # Set here, as .inputrc affects all readlines
 	LC_ALL="en_CA.utf8"
@@ -153,6 +153,7 @@ if [ "$INTERACTIVE" ]; then
 	#    http://gitready.com/advanced/2009/01/23/bash-git-status.html
 	#    http://henrik.nyh.se/2008/12/git-dirty-prompt
 	#    https://gist.github.com/31631
+	#    http://superuser.com/questions/31744/how-to-get-git-completion-bash-to-work-on-mac-os-x
 	export LC_ALL LANG PS1
 
 	multiplex-login #@@@ As above, warn of screen/tmux with a silly quote

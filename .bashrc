@@ -25,7 +25,7 @@ PAGER=less
 export EMAIL EDITOR PAGER
 
 export HISTIGNORE="&:  *:*root@*"  # Hide any command history containing root@, duplicate commands, or any preceded by two spaces (ninja mode?)
-export HISTSIZE=102400
+export HISTSIZE=20000
 #$TMOUT=n variable ends a bash session after n seconds of idling
 
 # ----------------------------------------------------------------------

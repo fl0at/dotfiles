@@ -28,6 +28,8 @@ set ruler " show the cursor position all the time
 set showcmd " display incomplete commands
 set incsearch " do incremental/live searching
 set scrolloff=1	" minimum lines to keep above and below cursor
+" TODO: Vary scrolloff based on terminal height
+" TODO: refactor the Resizer 
  
 " Unset search variable during Ctrl-L refresh
 " That is, turns off hlsearch's highlighting when done, without disabling it

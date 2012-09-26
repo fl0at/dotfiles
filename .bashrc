@@ -26,6 +26,7 @@ export EMAIL EDITOR PAGER
 
 export HISTIGNORE="&:  *:*root@*"  # Hide any command history containing root@, duplicate commands, or any preceded by two spaces (ninja mode?)
 export HISTSIZE=20000
+shopt -s histappend # normally, it gets truncated, which makes it all ugleh when multiples are used
 #$TMOUT=n variable ends a bash session after n seconds of idling
 
 # ----------------------------------------------------------------------
@@ -54,6 +55,8 @@ alias tm="tmux attach || tmux"
 alias h='fc -l'
 alias ls='ls --color=auto' # TODO: write test to guess --color=auto or -G or nada based on return status
 alias grep="grep --colour=auto" # TODO: as above, use test to guess if --color=auto is applicable, but it looks like all modern Unix families except Solaris and OpenBSD use GNU Grep
+alias egrep="egrep --color=auto" # Sucks to have to do this, since it's a symlink
+alias fgrep="fgrep --color=auto" # Likewise, sucks. At least nobody uses fgrep, mirite?!1
 alias tf="tail -n 0 -f"
 
 # If `gem man` exists, alias overtop of regular `man`, since it passes through
@@ -130,8 +133,6 @@ multiplex-login() {
 	fi
 }
 
-# TODO: `number` command/function that changes tmux/screen window's number?
-
 # ----------------------------------------------------------------------
 # Interactivity mode is kicking in, aww yeah
 # ----------------------------------------------------------------------
@@ -148,7 +149,7 @@ if [ "$INTERACTIVE" ]; then
 	bind 'set match-hidden-files off' # Set here, as .inputrc affects all readlines
 	LC_ALL="en_CA.utf8"
 	LANG="en_CA.utf8"
-	PS1='\[\e[1m\][\[\e[93m\]\u\[\e[91m\]@\h \[\e[94m\]\W\[\e[00m\]\[\e[1m\]]\$ \[\e[00m\]'
+	PS1='\[\e[1m\][\[\e[93m\]\u\[\e[91m\]@\h \[\e[94m\]\w\[\e[00m\]\[\e[1m\]]\$ \[\e[00m\]'
 	# TODO: move PS1 to a (set of) function(s), see rtomayko
 	# TODO: show git/mercurial branch in prompt if the dir exists:
 	#    http://gitready.com/advanced/2009/01/23/bash-git-status.html

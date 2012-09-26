@@ -10,6 +10,7 @@
 [alias]
 	lg = log --graph --oneline --decorate
 	st = status
+	info = log -1 --stat
 
 [diff]
 	renames = copies # Figure out copies as well as renames for dedup

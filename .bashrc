@@ -78,14 +78,14 @@ alias cd..="cd .."
 # ----------------------------------------------------------------------
 # Screen-specific functions will output to stdout, and will check $STY first
 
-# NOTE: \e is a bashism. Use \033 for additional compatibility.
+# NOTE: \e is a GNU-ism. Using \033 for additional compatibility.
 # I could use tput, but that depends on the reported $TERM...
 
 # TODO: switch echo for printf, since it doesn't accept -- portably?
 
 # Set window title in GNU Screen
 title() {
-	[ ! -z "$STY" ] && echo -ne "\ek$*\e\\"
+	[ ! -z "$STY" ] && echo -ne "\033k$*\033\\"
 }
 
 # Sets hardstatus, a variable stored in the window. Used as PuTTY/xterm title.
@@ -93,12 +93,12 @@ title() {
 #   Note: screen's caption will likely override this.
 #      Use %h in the caption to pass through the window's own hardstatus.
 hardstatus() { 
-	echo -ne "\e]0;$*\007" # xterm/PuTTY kludge: ANSI is <ESC> _ x <ESC> \\
+	echo -ne "\033]0;$*\007" # xterm/PuTTY kludge: ANSI is <ESC> _ x <ESC> \\
 } 
 
 # Temporarily override Screen's hardstatus (eg for Alerts)
 screenalert() {
-	[ ! -z "$STY" ] && echo -ne "\e!$*\e\\"
+	[ ! -z "$STY" ] && echo -ne "\033!$*\033\\"
 }
 
 #@@@ Spit out a goofy quote

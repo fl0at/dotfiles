@@ -1,13 +1,15 @@
 # Scott Paeth's screenrc -- http://github.com/fl0at/dotfiles
 
 startup_message off
-#chdir # start shells in home dir rather than cwd
+#chdir # start shells in $HOME (or optionally somewhere else) rather than screen's original working directory
 vbell off
 defscrollback 10000
 defutf8 on
-defmonitor on
+
+# Monitor all windows by default. You definitely don't want this for top, irssi, etc.
+#defmonitor on
 encoding utf-8
-#altscreen on # for vim rendering in a clearable screen # causing issues with manpage piping on CentOS 5
+#altscreen on # used for vim rendering in a clearable screen, manpages clearing when closed, and more. #@@@ causing issues with manpage piping on CentOS 5, so I disabled it
 
 # Just show the real darn hardstatus!
 hardstatus off
@@ -15,7 +17,7 @@ hardstatus off
 # Minimal caption: Blue, numbered window tabs, right-aligned green clock
 caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %=%{kG}%C%A"
 
-# TODO: duplicate RHEL's "remove stupid keybindings" sections
+# TODO: duplicate RHEL's "remove stupid keybindings" sections?
 
 ######### From James Bothe at Rackforce:
 # Blue top taskbar: window number, hardstatus; right aligned status, time

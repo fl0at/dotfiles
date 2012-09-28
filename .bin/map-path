@@ -15,7 +15,7 @@ CMD=$@
 
 (while [ "$TREE" != "/" ]
 do
-	${CMD:-ls -lad --width=80} $TREE # TODO: -- argument? Is it portable?
+	${CMD:-ls -lad --} $TREE
 	TREE=`dirname $TREE`
 done)|tac
 

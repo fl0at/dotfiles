@@ -3,7 +3,8 @@ set -e
 # Makes sure the commit summary is 50 characters or less, and the body 72 or less
 # Install into .git/hooks, make sure it's executable
 
-# TODO: work around the fact that using git commit -F commit-msg.XXXX will _commit the default comments_ as part of the commit. OW.
+# TODO: get another hook for pre-commit, so that you can diff the unmodified file and the new file, and compare, rather than try to (badly) work around the comments.
+# And work around the fact that using git commit -F commit-msg.XXXX will _commit the default comments_ as part of the commit. OW.
 
 # TODO: use printf instead of echo, to use --? Is it portable? Likewise for the rest.
 

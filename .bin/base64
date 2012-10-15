@@ -4,7 +4,6 @@
 set -e
 
 if [ ! -z "$*" ]; then
-	echo '$* = ' "$*"
 	printf "%s" "$*" | /usr/bin/base64
 else
 	if [ -t 0 ]; then # check if stdin

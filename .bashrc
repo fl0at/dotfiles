@@ -104,7 +104,8 @@ screenalert() {
 
 #@@@ Spit out a goofy quote
 quote() {
-        len=`wc -l < ~/.quotes`
+        local len=`wc -l < ~/.quotes`
+	local ranline;
         let "ranline = $RANDOM % $len + 1" # noninclusive
         head -n $ranline ~/.quotes | tail -n 1
 }
@@ -145,8 +146,8 @@ if [ "$INTERACTIVE" ]; then
 		echo -ne '\033%G' #@@@ Force terminal to UTF-8 # TODO: breaks on Terminal.app, ConnectBot, iTerm2... # TODO: use tput to check if we can at least accept the escape?
 	fi
 	bind 'set match-hidden-files off' # Set here, as .inputrc affects all readlines
-	LC_ALL="en_CA.utf8"
-	LANG="en_CA.utf8"
+	LC_ALL="en_CA.UTF-8"
+	LANG="en_CA.UTF-8"
 	PS1='\[\e[1m\][\[\e[93m\]\u\[\e[91m\]@\h \[\e[94m\]\w\[\e[00m\]\[\e[1m\]]\$ \[\e[00m\]'
 	# TODO: move $PS1 to a (set of) function(s): see rtomayko
 	# TODO: show git/mercurial branch in prompt if the dir exists:

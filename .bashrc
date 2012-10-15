@@ -6,7 +6,7 @@
 
 set -o noclobber # don't allow interactive pipes to overwrite unless using |>
 umask 0007 # since I'm in the apache group...
-#set -o notify # notify of bg job completion immediately
+bind 'set match-hidden-files off' # Don't show dotfiles in tab-tab-completes unless specified. Set here instead of .inputrc, since that would affect readlines in other programs too
 
 # ----------------------------------------------------------------------
 # Environment Variables
@@ -164,4 +164,5 @@ fi
 # BIG TODO: deal with unsupported $TERMs like 256color, in screen/tmux as well (and [re]move UTF-8 SGR?)
 # For screen/tmux, I can detect $TERM and pass along a settings file which sources the main .screenrc or .tmux.conf but that's ugly.
 # For shells, period, I need to properly detect if a term is supported, and fall back gracefully, rather than getting dumped.
-# TODO: I also need to find a solution for ssh client's passing $TERM along to unsuspecting servers (and unlike above, I can't rely on programmatic fallback: that is, a virgin VPS will barf on screen-256color-bce)
+# TODO: I also need to find a solution for ssh clients passing $TERM along to unsuspecting servers (and unlike above, I can't rely on programmatic fallback: that is, a virgin VPS will barf on screen-256color-bce)
+# Probably, I will just wrap it in a function, since you can't unset ssh_config's SendEnv variable if set in /etc. Lame.

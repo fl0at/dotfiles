@@ -3,15 +3,15 @@ Dotfiles
 
 Nothing special about this repository: it intends to live in ~, with no symlink or install-script trickery.
 
-Where possible, I attempt to be as compatible and low-impact as possible. Not only do I aim for POSIX/bourne compatibility and respect of existing environment variables, but also for cross-platform compatibility. This should be just as happy on OpenBSD, Cygwin, or Mac OS X as anywhere else  
-Feel free to open pull requests for added functionality: even if I live in headless Linux, I want rich support for other platforms and workflows. This includes other editors, shells, multiplexers, and the like.
+Where possible, I attempt to be as compatible and low-impact as possible. Not only do I aim for POSIX/bourne compatibility and respect of existing environment variables, but I also aim for cross-platform compatibility. This should be just as happy on OpenBSD, Cygwin, or Mac OS X as anywhere else.
+Feel free to open pull requests for added functionality: even if I live in headless Linux, I want rich support for other platforms and workflows. This includes other editors, shells, multiplexers, terminals, and the like.
 
-Caveats are noted, and all reasonable attempts are made to test an environment's functionality before enabling it.
+Caveats are noted, and all reasonable attempts are made to test environment-specific functionality before including it.
 
 Installation
 ============
 
-To use this as a drop-in set of dotfiles, you'll likely need to tweak to taste:
+To use this as a drop-in set of dotfiles, you'll likely need to tweak these to taste:
  * .bashrc's PS1, PATH, EMAIL, LC_ALL, and LANG variables, and aliases
  * .gitconfig's email and name
  * .hgrc's email and name
@@ -19,10 +19,7 @@ To use this as a drop-in set of dotfiles, you'll likely need to tweak to taste:
 
 You, uh, probably want to delete this README as well. `:D`
 
-There is also a commit-msg file. If installed in .git/hooks, it'll prevent commits with long summaries (>50 chars) or bodies (>72 chars), which are unfriendly to emailing, pushing to github, etc.
-For more information, see [Tim Pope's classic article](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-
-I would recommend vetting these files and copying what you like, but if you want to clone in-place in your home directory, it is definitely designed to do that pretty unobtrusively:
+I would recommend vetting these files and copying only what you like, but if you want to clone this repo in-place into your home directory, it is definitely designed to do that pretty unobtrusively:
 
 ```bash
 cd ~; git init
@@ -30,22 +27,24 @@ git remote add origin http://github.com/fl0at/dotfiles.git
 git pull origin master
 ```
 
+There is also a commit-msg file. If installed in .git/hooks, it'll prevent commits with long summaries (>50 chars) or bodies (>72 chars), which are unfriendly to emailing, pushing to github, etc.
+For more information, see [Tim Pope's classic article](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html). No pressure or anything.
 
 Quirkiness
 ==========
 
 Beyond everything mentioned above, there are also a few places where my own idioms might weird you out. They are preceded by a comment containing _`@@@`_.
 
-For example, I like my shells to warn me of background screens/tmuxes when I first log in, and output a silly quote, too.
+For example, I like my shells to warn me of background screens/tmuxes when I first log in, and output a silly quote, too.  
+You could always substitute `fortune` if you don't like my quotes.
+Or, preferably, contribute more!
 
 There is a .gitignore with an outright wildcard, so your whole homedir doesn't show up as untracked noise.
 
-I also get creeped out by vim's mouse support in terminal emulators, so that's disabled.
+I also get creeped out by vim's mouse support in terminal emulators, so that's disabled.  
+(I'd like it if not for passthrough when clicking back onto my terminal. Grr.)
 
-I also use a standard ANSI/VTxx escape sequence to force terminal windows to UTF-8 mode. It works well in PuTTY, and should also work on Unicode-capable xterms, but your mileage may vary, as I haven't tested that.  
-I know I can just set that encoding manually in PuTTY, but if I'm using a fresh copy of PuTTY at a friend's house, for example... It's easy to forget, only to annoy you when you get accented characters instead of quotes in a manpage.
-
-Tmux is also set to act like GNU Screen in main aspects. I understand most people do this, but I figured I'd note it just the same.
+Tmux's keymap is also set up to act like GNU Screen in most respects. I understand most people do this, but I figured I'd note it as a quirk just the same.
 
 License
 =======
@@ -53,4 +52,4 @@ License
 Unless otherwise specified, (c) Scott Paeth, 2012  
 No rights reserved. I'd appreciate a namedrop though.
 
-Sources cited where possible. Main source of inspiration was rtomayko's dotfiles, but ryanb and many others weighed in heavily.
+Sources cited where possible. Main source of inspiration was rtomayko's dotfiles, but then, The Internet(tm).

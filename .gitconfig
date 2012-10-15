@@ -11,6 +11,7 @@
 	lg = log --graph --oneline --decorate
 	st = status
 	info = log -1 --stat
+	todo = !git ls-files | xargs grep --color=auto -i todo
 
 [diff]
 	renames = copies # Figure out copies as well as renames for dedup

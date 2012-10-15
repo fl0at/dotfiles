@@ -142,9 +142,6 @@ esac
 
 
 if [ "$INTERACTIVE" ]; then
-	if [ -z "$STY$TMUX" ]; then # If not inside a screen/tmux: raw terminal
-		echo -ne '\033%G' #@@@ Force terminal to UTF-8 # TODO: breaks on Terminal.app, ConnectBot, iTerm2... # TODO: use tput to check if we can at least accept the escape?
-	fi
 	bind 'set match-hidden-files off' # Set here, as .inputrc affects all readlines
 	LC_ALL="en_CA.UTF-8"
 	LANG="en_CA.UTF-8"

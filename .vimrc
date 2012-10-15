@@ -10,6 +10,8 @@
 " TODO: incorporate this resizer?
 " http://www.scarpa.name/2011/04/06/terminal-vim-resizing/
 
+let @/ = '' " Forget last session's active search on reopen, since it's strange and very ugly when paired with hlsearch. It still remains in history.
+
 set nocompatible
 set autoindent
 set backspace=indent,eol,start

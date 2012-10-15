@@ -6,8 +6,6 @@ set -e
 # TODO: get another hook for pre-commit, so that you can diff the unmodified file and the new file, and compare, rather than try to (badly) work around the comments.
 # And work around the fact that using git commit -F commit-msg.XXXX will _commit the default comments_ as part of the commit. OW.
 
-# TODO: use printf instead of echo, to use --? Is it portable? Likewise for the rest.
-
 COMMITMSG="$1"
 FIRSTLINE=true
 SECONDLINE=false
@@ -23,21 +21,21 @@ diefrom() {
 
 while IFS='' read -r line
 do
-	if echo "$line" | grep -q "^#"; # Git comments MUST be first character
+	if printf "%s" "$line" | grep -q "^#"; # Git comments MUST be first character
 	then continue; fi
 	if $FIRSTLINE;
 	then
 		FIRSTLINE=false
 		SECONDLINE=true
-		[ `echo -n "$line" | wc -c` -gt 50 ] && diefrom "summary text exceeding 50 characters."
+		[ `printf "%s" "$line" | wc -c` -gt 50 ] && diefrom "summary text exceeding 50 characters."
 	elif $SECONDLINE;
 	then
 		SECONDLINE=false
 		ONWARDS=true
-		[ `echo -n "$line" | wc -c` -gt 1 ] && diefrom "improperly delimited or empty body."
+		[ `printf "%s" "$line" | wc -c` -gt 1 ] && diefrom "improperly delimited or empty body."
 	elif $ONWARDS;
 	then
-		[ `echo -n "$line" | wc -c` -gt 72 ] && diefrom "body text exceeding 72 character limit."
+		[ `printf "%s" "$line" | wc -c` -gt 72 ] && diefrom "body text exceeding 72 character limit."
 	fi
 done < "$COMMITMSG"
 

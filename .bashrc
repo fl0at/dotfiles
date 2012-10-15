@@ -47,9 +47,9 @@ alias vi=vim
 
 # Sugar aliases
 alias bc='bc -il ~/.bc' # use preset useful variables, see .bc
-alias beep="echo -ne '\a'"
+alias beep="printf '\a'"
 alias yyyy-mm-dd="date +'%Y-%m-%d'" # outputs a handy datestamp for log filenames, etc
-alias fulldate="date +'%Y-%m-%dT%H:%M:%S%z'" # Likewise, but timestamped too. # Note: while %z (timezone offset) is valid for POSIX's strftime(), it is not technically required for the date command. YMMV
+alias fulldate="date +'%Y-%m-%dT%H:%M:%S%z'" # Likewise, but timestamped too. # Note: while %z (timezone offset) is valid for POSIX's strftime(), it is not technically required to be implemented for the date command.
 alias sr="screen -d -R" # gimme a Screen! Existing or new, whichever. Add `-p =' to see windowlist on reconnect
 alias tm="tmux attach || tmux"
 alias h='fc -l'
@@ -84,11 +84,9 @@ alias cd..="cd .."
 # NOTE: \e is a GNU-ism. Using \033 for additional compatibility.
 # I could use tput, but that depends on the reported $TERM...
 
-# TODO: switch echo for printf, since it doesn't accept -- portably?
-
 # Set window title in GNU Screen
 title() {
-	[ ! -z "$STY" ] && echo -ne "\033k$*\033\\"
+	[ ! -z "$STY" ] && printf "\033k%s\033\\" "$*"
 }
 
 # Sets hardstatus, a variable stored in the window. Used as PuTTY/xterm title.
@@ -96,12 +94,12 @@ title() {
 #   Note: screen's caption will likely override this.
 #      Use %h in the caption to pass through the window's own hardstatus.
 hardstatus() { 
-	echo -ne "\033]0;$*\007" # xterm/PuTTY kludge: ANSI is <ESC> _ x <ESC> \\
+	printf "\033]0;%s\007" "$*" # xterm/PuTTY kludge: ANSI is <ESC>_foo<ESC>\\
 } 
 
 # Temporarily override Screen's hardstatus (eg for Alerts)
 screenalert() {
-	[ ! -z "$STY" ] && echo -ne "\033!$*\033\\"
+	[ ! -z "$STY" ] && printf "\033!%s\033\\" "$*"
 }
 
 #@@@ Spit out a goofy quote
@@ -123,11 +121,11 @@ multiplex-login() {
 		#In any case, this is as good as I can get. Tolerant of spaces, ()s, etc.
 		[ -z $SCREENDIR ] && SCREENDIR=$(screen -ls | grep 'S-' | sed -e 's@[^/]*\(/.*\)S-.*$@\1@')
 		if [ "$(ls -A $SCREENDIR/S-`whoami` 2> /dev/null)" ]; then
-			echo -n "There is a wild Screen about. "
+			printf "There is a wild Screen about. "
 			quote
 		fi
 		if tmux has-session &> /dev/null; then
-			echo -n "There is a wild tmux about. "
+			printf "There is a wild tmux about. "
 			quote
 		fi
 	fi

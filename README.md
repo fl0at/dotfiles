@@ -27,7 +27,7 @@ git remote add origin http://github.com/fl0at/dotfiles.git
 git pull origin master
 ```
 
-There is also a commit-msg file. If installed in .git/hooks, it'll prevent commits with long summaries (>50 chars) or bodies (>72 chars), which are unfriendly to emailing, pushing to github, etc.
+There is also a commit-msg file. If installed in .git/hooks, it'll prevent commits with long summaries (>50 chars) or bodies (>72 chars), which are unfriendly to emailing, pushing to github, etc.  
 For more information, see [Tim Pope's classic article](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html). No pressure or anything.
 
 Quirkiness

@@ -148,15 +148,29 @@ if [ "$INTERACTIVE" ]; then
 	LC_ALL="en_CA.utf8"
 	LANG="en_CA.utf8"
 	PS1='\[\e[1m\][\[\e[93m\]\u\[\e[91m\]@\h \[\e[94m\]\w\[\e[00m\]\[\e[1m\]]\$ \[\e[00m\]'
-	# TODO: move PS1 to a (set of) function(s), see rtomayko
+	# TODO: move $PS1 to a (set of) function(s): see rtomayko
 	# TODO: show git/mercurial branch in prompt if the dir exists:
 	#    http://gitready.com/advanced/2009/01/23/bash-git-status.html
 	#    http://henrik.nyh.se/2008/12/git-dirty-prompt
 	#    https://gist.github.com/31631
 	#    http://superuser.com/questions/31744/how-to-get-git-completion-bash-to-work-on-mac-os-x
+	# easiest: bash_completion includes __git_ps1(), see below
 	export LC_ALL LANG PS1
 
 	multiplex-login #@@@ As above, warn of screen/tmux with a silly quote
+fi
+
+# Normally __git_ps1() is provided by bash_completion, but we can set it if not.
+# TODO: actually use __git_ps1()
+if ! type __git_ps1 &> /dev/null; then
+	# http://effectif.com/git/config
+	__git_ps1 ()
+	{
+	    local b="$(git symbolic-ref HEAD 2>/dev/null)";
+	    if [ -n "$b" ]; then
+		printf " (%s)" "${b##refs/heads/}"; # posix compliant, believe it or not!
+	    fi
+	}
 fi
 
 # BIG TODO: deal with unsupported $TERMs like 256color, in screen/tmux as well (and [re]move UTF-8 SGR?)

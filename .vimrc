@@ -15,23 +15,24 @@ let @/ = '' " Forget last session's active search on reopen, since it's strange 
 set nocompatible
 set autoindent
 set backspace=indent,eol,start
+set nobackup
+set nowritebackup
+set shortmess=a " Always show the short message on the bottom!
+set ruler " show the cursor position all the time
+set showcmd " display incomplete commands
+set hlsearch " highlight search matches. Common default, specified for redundancy.
+set incsearch " do incremental/live searching
+set mouse= " @@@ Disabled: mouse support in PuTTY is a bit disconcerting to me.
+set history=50 " keep 50 lines of command line history
+set scrolloff=1	" minimum lines to keep above and below cursor
+" TODO: Vary scrolloff based on terminal height
+" TODO: refactor the Resizer 
+
 filetype plugin indent on
 autocmd FileType html setl sw=4 sts=4 ts=4 et " two-space "tabs" for html
 autocmd FileType css setl sw=4 sts=4 ts=4 et " two-space "tabs" for css
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
-" TODO: portable "file changed" test. The below doesn't work:
-" autocmd FileChangedShell * echo "Warning: File changed on disk"
-set nobackup
-set nowritebackup
-set shortmess=a " Always show the short message on the bottom!
-set mouse= " @@@ Disabled: mouse support in PuTTY is a bit disconcerting to me.
-set history=50 " keep 50 lines of command line history
-set ruler " show the cursor position all the time
-set showcmd " display incomplete commands
-set incsearch " do incremental/live searching
-set scrolloff=1	" minimum lines to keep above and below cursor
-" TODO: Vary scrolloff based on terminal height
-" TODO: refactor the Resizer 
+" TODO: portable "file changed while editing" test.
  
 " Unset search variable during Ctrl-L refresh
 " That is, turns off hlsearch's highlighting when done, without disabling it

@@ -142,7 +142,6 @@ esac
 
 
 if [ "$INTERACTIVE" ]; then
-	bind 'set match-hidden-files off' # Set here, as .inputrc affects all readlines
 	LC_ALL="en_CA.UTF-8"
 	LANG="en_CA.UTF-8"
 	PS1='\[\e[1m\][\[\e[93m\]\u\[\e[91m\]@\h \[\e[94m\]\w\[\e[00m\]\[\e[1m\]]\$ \[\e[00m\]'

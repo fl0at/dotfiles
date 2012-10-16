@@ -20,7 +20,7 @@ PATH=~/.bin:$PATH
 export PATH
 
 # Fun environment variables
-EMAIL=scott@paeth.ca
+EMAIL=changeme@domain.tld
 EDITOR=vim
 PAGER=less
 export EMAIL EDITOR PAGER

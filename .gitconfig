@@ -1,6 +1,3 @@
-[user]
-	email = scott_karana@hotmail.com
-	name = Scott Paeth
 [core]
 	excludesfile = ~/.gitignore_global
 

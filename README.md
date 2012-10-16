@@ -15,8 +15,6 @@ Installation
 
 To use this as a drop-in set of dotfiles, you'll likely need to tweak these to taste:
  * .bashrc's PS1, PATH, EMAIL, LC_ALL, and LANG variables, and aliases
- * .gitconfig's email and name
- * .hgrc's email and name
  * ~/.bin's location and PATH, if you don't dig that spot
 
 You, uh, probably want to delete this README as well. `:D`

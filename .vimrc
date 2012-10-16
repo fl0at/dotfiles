@@ -31,11 +31,13 @@ set scrolloff=1	" minimum lines to keep above and below cursor
 filetype plugin indent on
 autocmd FileType html setl sw=4 sts=4 ts=4 et " two-space "tabs" for html
 autocmd FileType css setl sw=4 sts=4 ts=4 et " two-space "tabs" for css
-autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0]) " Put cursor at start, instead of 'last location'
+autocmd BufRead .git/COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0]) " For older vim versions. Like mine.
+autocmd BufRead .git/COMMIT_EDITMSG setl textwidth=72 " see README, regarding line lengths. (Not needed for FileType since it's already there!)
 " TODO: portable "file changed while editing" test.
  
-" Unset search variable during Ctrl-L refresh
-" That is, turns off hlsearch's highlighting when done, without disabling it
+" Unset search variable in addition to the regular Ctrl-L refresh.
+" That is, turns off hlsearch's highlighting when done, without disabling it.
 nnoremap <C-L> :let @/ = ""<CR><C-L> 
 " TODO: use <esc> instead, without breaking arrows or making vim beep on start
 

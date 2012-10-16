@@ -4,6 +4,7 @@
 # Made to be fully compatible with straight Bourne sh, other than shopt/bind
 
 [ -f /etc/bashrc ] && . /etc/bashrc
+[ -f /etc/bash.bashrc ] && . /etc/bash.bashrc # Debian-style
 
 set -o noclobber # don't allow interactive pipes to overwrite unless using |>
 umask 0007 # since I'm in the apache group...
@@ -150,6 +151,7 @@ if [ "$INTERACTIVE" ]; then
 	LANG="en_CA.UTF-8"
 	PS1='\[\e[1m\][\[\e[93m\]\u\[\e[91m\]@\h \[\e[94m\]\w\[\e[00m\]\[\e[1m\]]\$ \[\e[00m\]'
 	# TODO: move $PS1 to a (set of) function(s): see rtomayko
+	# TODO: include PROMPT_COMMANDs as well
 
 	# RHEL: PS1="[\u@\h \W]\\$ "
 	# Debian-style: PS1='\u@\h:\w\$ '
@@ -164,19 +166,19 @@ if [ "$INTERACTIVE" ]; then
 	export LC_ALL LANG PS1
 
 	multiplex_login #@@@ As above, warn of screen/tmux with a silly quote
-fi
 
-# Normally __git_ps1() is provided by bash_completion, but we can set it if not.
-# TODO: actually use __git_ps1()
-if ! type __git_ps1 2>&1 > /dev/null; then
-	# http://effectif.com/git/config
-	__git_ps1 ()
-	{
-	    local b="$(git symbolic-ref HEAD 2>/dev/null)";
-	    if [ -n "$b" ]; then
-		printf " (%s)" "${b##refs/heads/}"; # posix compliant, believe it or not!
-	    fi
-	}
+	# Normally __git_ps1() is provided by bash_completion, but we can set it if not.
+	# TODO: actually use __git_ps1()
+	if ! type __git_ps1 2>&1 > /dev/null; then
+		# http://effectif.com/git/config
+		__git_ps1 ()
+		{
+		    local b="$(git symbolic-ref HEAD 2>/dev/null)";
+		    if [ -n "$b" ]; then
+			printf " (%s)" "${b##refs/heads/}"; # posix compliant, believe it or not!
+		    fi
+		}
+	fi
 fi
 
 # BIG TODO: deal with unsupported $TERMs like 256color, in screen/tmux as well (and [re]move UTF-8 SGR?)

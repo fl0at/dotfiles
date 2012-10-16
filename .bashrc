@@ -1,6 +1,7 @@
 # Scott Paeth's ~/.bashrc -- http://github.com/fl0at/dotfiles
 # Fully safe for non-interactive shells!
-# (So be careful in the interactivity section!)
+#  (So be careful in the interactivity section!)
+# Made to be fully compatible with straight Bourne sh, other than shopt/bind
 
 [ -f /etc/bashrc ] && . /etc/bashrc
 
@@ -26,7 +27,8 @@ export EMAIL EDITOR PAGER
 
 export HISTIGNORE="&:  *:*root@*"  # Hide any command history containing root@, duplicate commands, or any preceded by two spaces (ninja mode?)
 export HISTSIZE=20000
-shopt -s histappend # normally, it gets truncated, which makes it all ugleh when multiples are used
+shopt -s histappend # normally, history gets truncated, which makes it all ugleh when multiples are used
+shopt -s checkwinsize # update cols/lines after commands finish. Set by default in essentially every distro, but here Just In Case(tm)!
 #$TMOUT=n variable ends a bash session after n seconds of idling
 
 # ----------------------------------------------------------------------
@@ -60,7 +62,7 @@ alias fgrep="fgrep --color=auto" # Likewise, sucks. At least nobody uses fgrep, 
 alias tf="tail -n 0 -f"
 
 # If `gem man` exists, alias overtop of regular `man`, since it passes through
-ruby -r rubygems -e 'begin exit(Gem.available?("gem-man")) rescue exit(Gem::Specification.find_all_by_name("rails").empty?) end' &> /dev/null && alias man="gem man -s"
+ruby -r rubygems -e 'begin exit(Gem.available?("gem-man")) rescue exit(Gem::Specification.find_all_by_name("rails").empty?) end' 2>&1 > /dev/null && alias man="gem man -s"
 
 # Typo aliases
 alias l=ls
@@ -113,8 +115,8 @@ quote() {
 
 #@@@ So... warn the user of existing screen/tmux sessions in new logins, ish.
 # This gets invoked in the interactivity section below.
-multiplex-login() {
-	which grep ls whoami &> /dev/null || return
+multiplex_login() {
+	which grep ls whoami 2>&1 > /dev/null || return
 	if [ -z "$STY$TMUX" ] # not in a multiplexer already
 	then
 		#This will reliably determine $SCREENDIR _unless_ it doesn't have an S- prefix.
@@ -125,7 +127,7 @@ multiplex-login() {
 			printf "There is a wild Screen about. "
 			quote
 		fi
-		if tmux has-session &> /dev/null; then
+		if tmux has-session 2>&1 > /dev/null; then
 			printf "There is a wild tmux about. "
 			quote
 		fi
@@ -139,6 +141,8 @@ multiplex-login() {
 case "$-" in
 	*i*) INTERACTIVE=true ;;
 esac
+# The standard test is if $PS1 was set, but it's possible the user unset it. The $- variable cannot be unset.
+# Honestly though, I'm just being pedantic. Still! There is no downside here.
 
 
 if [ "$INTERACTIVE" ]; then
@@ -146,6 +150,11 @@ if [ "$INTERACTIVE" ]; then
 	LANG="en_CA.UTF-8"
 	PS1='\[\e[1m\][\[\e[93m\]\u\[\e[91m\]@\h \[\e[94m\]\w\[\e[00m\]\[\e[1m\]]\$ \[\e[00m\]'
 	# TODO: move $PS1 to a (set of) function(s): see rtomayko
+
+	# RHEL: PS1="[\u@\h \W]\\$ "
+	# Debian-style: PS1='\u@\h:\w\$ '
+	# Mac OS X: PS1='\h:\W \u\$ '
+
 	# TODO: show git/mercurial branch in prompt if the dir exists:
 	#    http://gitready.com/advanced/2009/01/23/bash-git-status.html
 	#    http://henrik.nyh.se/2008/12/git-dirty-prompt
@@ -154,12 +163,12 @@ if [ "$INTERACTIVE" ]; then
 	# easiest: bash_completion includes __git_ps1(), see below
 	export LC_ALL LANG PS1
 
-	multiplex-login #@@@ As above, warn of screen/tmux with a silly quote
+	multiplex_login #@@@ As above, warn of screen/tmux with a silly quote
 fi
 
 # Normally __git_ps1() is provided by bash_completion, but we can set it if not.
 # TODO: actually use __git_ps1()
-if ! type __git_ps1 &> /dev/null; then
+if ! type __git_ps1 2>&1 > /dev/null; then
 	# http://effectif.com/git/config
 	__git_ps1 ()
 	{

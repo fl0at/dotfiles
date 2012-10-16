@@ -1,10 +1,12 @@
 Dotfiles
 ========
 
-Nothing special about this repository: it intends to live in ~, with no symlink or install-script trickery.
+Nothing special about this repository: it intends to live in ~, with no build scripts, special installation procedure, or symlink trickery.
 
-Where possible, I attempt to be as compatible and low-impact as possible. Not only do I aim for POSIX/bourne compatibility and respect of existing environment variables, but I also aim for cross-platform compatibility. This should be just as happy on OpenBSD, Cygwin, or Mac OS X as anywhere else.
-Feel free to open pull requests for added functionality: even if I live in headless Linux, I want rich support for other platforms and workflows. This includes other editors, shells, multiplexers, terminals, and the like.
+This set of dotfiles is to be as unobtrusive as possible. Environment variables are preserved, and there shouldn't be any issues with hardcoded paths, etc. Use your own file structure, quirks and all!
+I aim for over-the-top POSIX compatibility whenever possible. For example, even ``.bashrc`` will run in straight POSIX/bourne shell, other than shopt/bind.
+I also strive for cross-platform friendliness. This should be just as happy on OpenBSD, Cygwin, or Mac OS X as anywhere else.
+Feel free to open pull requests for added functionality! Even though I'm a text-only vim-using CentOS Linux kind of guy, I want rich support for other platforms and workflows. Mac OS X defaults are especially high on my list of TODOs... :)
 
 Caveats are noted, and all reasonable attempts are made to test environment-specific functionality before including it.
 

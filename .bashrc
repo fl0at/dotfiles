@@ -63,7 +63,7 @@ alias fgrep="fgrep --color=auto" # Likewise, sucks. At least nobody uses fgrep, 
 alias tf="tail -n 0 -f"
 
 # If `gem man` exists, alias overtop of regular `man`, since it passes through
-ruby -r rubygems -e 'begin exit(Gem.available?("gem-man")) rescue exit(Gem::Specification.find_all_by_name("rails").empty?) end' 2>&1 > /dev/null && alias man="gem man -s"
+ruby -r rubygems -e 'begin exit(Gem.available?("gem-man")) rescue exit(Gem::Specification.find_all_by_name("rails").empty?) end' > /dev/null 2>&1 && alias man="gem man -s"
 
 # Typo aliases
 alias l=ls
@@ -117,7 +117,7 @@ quote() {
 #@@@ So... warn the user of existing screen/tmux sessions in new logins, ish.
 # This gets invoked in the interactivity section below.
 multiplex_login() {
-	which grep ls whoami 2>&1 > /dev/null || return
+	which grep ls whoami > /dev/null 2>&1 || return
 	if [ -z "$STY$TMUX" ] # not in a multiplexer already
 	then
 		#This will reliably determine $SCREENDIR _unless_ it doesn't have an S- prefix.
@@ -128,7 +128,7 @@ multiplex_login() {
 			printf "There is a wild Screen about. "
 			quote
 		fi
-		if tmux has-session 2>&1 > /dev/null; then
+		if tmux has-session > /dev/null 2>&1; then
 			printf "There is a wild tmux about. "
 			quote
 		fi

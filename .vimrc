@@ -52,6 +52,11 @@ if &t_Co > 2 || has("gui_running")
 	endif
 endif
 
+if &diff && has("cursorbind")
+	" In case you have a version that doesn't do this automatically...
+	set cursorbind
+endif
+
 " Line numbers: show relative in Normal mode and absolute in Edit mode
 " Credit to http://news.ycombinator.com/item?id=4172099
 " https://gist.github.com/3012145

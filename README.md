@@ -27,6 +27,8 @@ git remote add origin http://github.com/fl0at/dotfiles.git
 git pull origin master
 ```
 
+If you use this approach, I'd recommend creating a branch for yourself (`git checkout -b your_branch_name`) so that you can still easily pull in updates.
+
 Quirkiness
 ==========
 

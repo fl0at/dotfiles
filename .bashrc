@@ -169,7 +169,7 @@ if [ "$INTERACTIVE" ]; then
 
 	# Normally __git_ps1() is provided by bash_completion, but we can set it if not.
 	# TODO: actually use __git_ps1()
-	if ! type __git_ps1 2>&1 > /dev/null; then
+	if ! type __git_ps1 > /dev/null 2>&1; then
 		# http://effectif.com/git/config
 		__git_ps1 ()
 		{

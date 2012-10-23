@@ -1,6 +1,7 @@
-" Most of the following is poached from $VIMRUNTIME/vimrc_example.vim 
-" The reason? So I don't get screwed over by expecting sanity in random distros
-
+" github.com/fl0at/dotfiles
+"
+" Plenty of the following is poached from $VIMRUNTIME/vimrc_example.vim
+" The reason? So I don't get screwed over by expecting sanity in random distros.
 " Lots is also from from Steve Losh and ryanb:
 " 	https://github.com/ryanb/dotfiles
 " 	https://bitbucket.org/sjl/dotfiles

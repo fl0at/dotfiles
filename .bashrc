@@ -151,11 +151,16 @@ if [ "$INTERACTIVE" ]; then
 	LANG="en_CA.UTF-8"
 	PS1='\[\e[1m\][\[\e[93m\]\u\[\e[91m\]@\h \[\e[94m\]\w\[\e[00m\]\[\e[1m\]]\$ \[\e[00m\]'
 	# TODO: move $PS1 to a (set of) function(s): see rtomayko
-	# TODO: include PROMPT_COMMANDs as well
 
+	# Default PS1s:
 	# RHEL: PS1="[\u@\h \W]\\$ "
-	# Debian-style: PS1='\u@\h:\w\$ '
+	# Debian/Ubuntu-style: PS1='\u@\h:\w\$ '
 	# Mac OS X: PS1='\h:\W \u\$ '
+
+	# Default PROMPT_COMMANDs:
+	# RHEL: PROMPT_COMMAND='printf "\033]0;%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+	# Debian: PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+	# OS X: see /etc/bashrc, it relies on specific functionality if it works on your version of OS X at all. :)
 
 	# TODO: show git/mercurial branch in prompt if the dir exists:
 	#    http://gitready.com/advanced/2009/01/23/bash-git-status.html

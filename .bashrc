@@ -45,7 +45,7 @@ alias la='ls -la'
 alias ll='ls -l'
 alias lt='ls -lt'
 alias more="less" # because muscle memory wins...
-alias vi=vim
+alias vi=vim # FIXME: doesn't work where only Vi is present
 
 # Sugar aliases
 alias bc='bc -il ~/.bc' # use preset useful variables, see .bc

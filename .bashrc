@@ -122,7 +122,7 @@ multiplex_login() {
 		#This will reliably determine $SCREENDIR _unless_ it doesn't have an S- prefix.
 		#That's only possible when SCREENDIR is set, or the build uses ~/.screen.
 		#In any case, this is as good as I can get. Tolerant of spaces, ()s, etc.
-		[ -z $SCREENDIR ] && SCREENDIR=$(screen -ls | grep 'S-' | sed -e 's@[^/]*\(/.*\)S-.*$@\1@')
+		[ -z $SCREENDIR ] && SCREENDIR=$(screen -ls 2> /dev/null | grep 'S-' | sed -e 's@[^/]*\(/.*\)S-.*$@\1@')
 		if [ "$(ls -A $SCREENDIR/S-`whoami` 2> /dev/null)" ]; then
 			printf "There is a wild Screen about. "
 			quote

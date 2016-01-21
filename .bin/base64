@@ -1,6 +1,6 @@
 #!/bin/sh
 # github.com/fl0at/dotfiles
-# Coreutils' base64 is good, but this allows for `base64 "password"`
+# Wrap coreutils' base64 to allow for `base64 "password"` as well as the regular redirection :-)
 set -e
 
 if [ ! -z "$*" ]; then

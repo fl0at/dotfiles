@@ -1,7 +1,7 @@
 # Scott Paeth's screenrc -- http://github.com/fl0at/dotfiles
 
 startup_message off
-#chdir # start shells in $HOME (or optionally somewhere else) rather than screen's original working directory
+#chdir #@@@ start shells in $HOME (or optionally somewhere else) rather than screen's original working directory
 vbell off
 defscrollback 10000
 defutf8 on

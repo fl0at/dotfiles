@@ -25,6 +25,7 @@ EDITOR=vim
 PAGER=less
 export EMAIL EDITOR PAGER
 
+# TODO: use histcontrol instead?
 export HISTIGNORE="&:  *:*root@*"  # Hide any command history containing root@, duplicate commands, or any preceded by two spaces (ninja mode?)
 export HISTSIZE=20000
 shopt -s histappend # normally, history gets truncated, which makes it all ugleh when multiples are used
@@ -50,6 +51,7 @@ alias vi=vim # FIXME: doesn't work where only Vi is present
 # Sugar aliases
 alias bc='bc -il ~/.bc' # use preset useful variables, see .bc
 alias beep="printf '\a'"
+# TODO: change yyyy-mm-dd to ymd?
 alias yyyy-mm-dd="date +'%Y-%m-%d'" # outputs a handy datestamp for log filenames, etc
 alias fulldate="date +'%Y-%m-%dT%H:%M:%S%z'" # Likewise, but timestamped too. # Note: while %z (timezone offset) is valid for POSIX's strftime(), it is not technically required to be implemented for the date command.
 alias sr="screen -d -R" # gimme a Screen! Existing or new, whichever. Add `-p =' to see windowlist on reconnect

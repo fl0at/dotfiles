@@ -1,8 +1,8 @@
 # Maildir support instead of mbox, the usual default
 set mbox_type=Maildir
-set folder="~/Maildir"
+set folder="~/Maildir" #@@@ You might not want the default directory
 set mask="!^\\.[^.]"
-set mbox="~/Maildir"
+set mbox="~/Maildir" #@@@ You might not want the default directory
 set record="+.Sent"
 set postponed="+.Drafts"
 set spoolfile="~/Maildir"

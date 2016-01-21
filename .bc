@@ -1,14 +1,39 @@
-/* Common `aliases' for use with filesize or time calculations. Oughta be straightforward enough... ;) */
+/***************** Date calculation helpers */
 
 s=1
 min=60
 hour=60
 day=24
 month=30
-year=(365+(97/400)) # leap years bro
+year=365+(97/400) # leap years
+
+/***************** Filesize calculations */
 
 k=1024
 m=k*k
 g=m*k
 t=g*k
 
+/***************** bc is a bit lacking for math, out of the box. */
+
+pi=4*a(1)
+e=e(1)
+
+/*   Trig is particularly bad: http://www.johndcook.com/blog/2010/07/14/bc-math-library/
+     Thus, make helper functions, both with bc-style short names, and common names */
+
+define sin(x) { return s(x); }
+define cos(x) { return c(x); }
+define tan(x) { return sin(x)/cos(x); }
+define t(x) { return s(x)/c(x); }
+
+define arcsin(x) { return arctan(x / sqrt(1 - x^2)); }
+define as(x) { return arcsin(x); }
+define arccos(x) { return arctan(sqrt(1 - x^2 )/ x); }
+define ac(x) { return arccos(x); }
+define arctan (x) { return a(x); }
+define at(x) { return a(x); }
+
+define arccot(x) { return pi/2 - arctan(x); }
+define arcsec(x) { return arctan(sqrt(x^2 - 1)); }
+define arccsc(x) { return arctan(1/sqrt(x^2 - 1)); }

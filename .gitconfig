@@ -12,3 +12,5 @@
 
 [diff]
 	renames = copies # Figure out copies as well as renames for dedup
+[push]
+	default = simple #@@@ Use the new default, and suppress deprecation warnings. Read git-config push.default...

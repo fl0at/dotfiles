@@ -1,4 +1,13 @@
 -- github.com/fl0at/dotfiles
+
 -- sqlite3 doesn't show headers by default, so...
 .header on
+
+-- Unless you really want line-by-line rows, you probably want this:
 .mode column
+
+--@@@ Display nulls as something?
+.nullvalue (null)
+
+-- Show query execution time
+.timer on

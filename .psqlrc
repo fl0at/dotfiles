@@ -1,0 +1,35 @@
+------- http://www.postgresql.org/docs/current/static/app-psql.html
+
+-- Disable the "helpful" startup message by turning on quiet mode
+\set QUIET 1
+
+-- Show query execution time
+\timing
+
+-- Automatically switch between regular "headers across top" format and expanded format, dependent on output
+\x\ auto
+
+-- Instead of failing on any errors (the default), allow for interactive repairs 
+\set ON_ERROR_ROLLBACK interactive
+
+-- During complete, use upper or lowercase SQL statements? Default is preserve-upper, "respect your manually typed case but otherwise capitalize"
+\set COMP_KEYWORD_CASE upper
+
+-- A longer history is nice to have.
+\set HISTSIZE 4000
+-- Especially if it's database-specific
+\set HISTFILE ~/.psql_history- :DBNAME
+-- Especially without duplicates, or "private" entries starting with space! A la bash.
+\set HISTCONTROL ignoreboth
+
+-- @@@ Instead of a blank for nulls, show a placeholder?
+\pset null '(null)'
+
+--@@@ Verbose mode
+--\set VERBOSITY verbose
+
+--@@@ Pager settings. Default is "on": use when needed. "off" and "always" are other options.
+--\pset pager off
+
+-- Disable quiet mode now that shell is spawned, and startup message has been bypassed!
+\unset QUIET

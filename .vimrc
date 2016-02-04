@@ -121,3 +121,6 @@ vnoremap <F1> <ESC>
 
 " Remaps insert-mode "jj" to count as Escape.
 inoremap jj <ESC>
+
+" Set key code (NOT mapping) timeout to 0ms
+set ttimeoutlen=0

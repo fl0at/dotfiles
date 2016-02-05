@@ -1,0 +1,30 @@
+# Source this from within your githooks if you want to use these functions.
+# Eg:
+# if changed ./some/file; then warn; fi
+
+# Uses a global to get away with this. Sue me. :3
+GITHOOK_FILE=
+
+# Has the file changed since the last locally-stored revision? (Great for pulls)
+function changed () {
+	GITHOOK_FILE=${1:-}
+	[ -z "$GITHOOK_FILE" ] && return;
+
+	if git diff "HEAD@{1}" --name-only | grep -q "$GITHOOK_FILE"; then
+		return 0 # changed = TRUE
+	else
+		return 1 # unchanged = FALSE
+	fi
+}
+
+function warn_bold () {
+	[ -z "$GITHOOK_FILE" ] && return;
+
+	printf "\a\033[41mWARNING: $GITHOOK_FILE differs from last local revision!\033[0m\n" > /dev/stderr
+}
+
+function warn () {
+	[ -z "$GITHOOK_FILE" ] && return;
+
+	printf "\a\033[41mWARNING\033[0m: $GITHOOK_FILE differs from last local revision!\n" > /dev/stderr
+}

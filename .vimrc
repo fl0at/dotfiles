@@ -38,8 +38,8 @@ set scrolloff=1	" minimum lines to keep above and below cursor
 
 if has("autocmd")
 	filetype plugin indent on
-	autocmd FileType html setl sw=4 sts=4 ts=4 et " two-space "tabs" for html
-	autocmd FileType css setl sw=4 sts=4 ts=4 et " two-space "tabs" for css
+	autocmd FileType html setl sw=4 sts=4 ts=4 et " four-space "tabs" for html
+	autocmd FileType css setl sw=4 sts=4 ts=4 et " four-space "tabs" for css
 	autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0]) " Put cursor at start, instead of 'last location'
 	autocmd BufRead .git/COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0]) " For older vim versions. Like mine.
 	autocmd BufRead .git/COMMIT_EDITMSG setl textwidth=72 " see README, regarding line lengths. (Not needed for FileType since it's already there!)

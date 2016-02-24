@@ -6,7 +6,7 @@
 -- Automatically switch between regular "headers across top" format and expanded format, dependent on output
 \x auto
 
--- Instead of failing on any errors (the default), allow for interactive repairs 
+-- Instead of failing on any parsing errors (the default), allow for interactive repairs of the command
 \set ON_ERROR_ROLLBACK interactive
 
 -- During complete, use upper or lowercase SQL statements? Default is preserve-upper, "respect your manually typed case but otherwise capitalize"
@@ -19,7 +19,7 @@
 -- Especially without duplicates, or "private" entries starting with space! A la bash.
 \set HISTCONTROL ignoreboth
 
--- @@@ Instead of a blank for nulls, show a placeholder?
+-- @@@ Instead of a showing nulls as blank spaces in results, show placeholder text? You probably want this, lest you confuse empty strings and nulls.
 \pset null '(null)'
 
 --@@@ Verbose mode

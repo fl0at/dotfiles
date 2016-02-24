@@ -26,4 +26,5 @@
 --\set VERBOSITY verbose
 
 --@@@ Pager settings. Default is "on": use when needed. "off" and "always" are other options.
---\pset pager off
+-- I prefer to be able to actually see results in scrollback history... ;)
+\pset pager off

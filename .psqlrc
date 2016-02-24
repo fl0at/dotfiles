@@ -4,7 +4,7 @@
 \timing
 
 -- Automatically switch between regular "headers across top" format and expanded format, dependent on output
-\x\ auto
+\x auto
 
 -- Instead of failing on any errors (the default), allow for interactive repairs 
 \set ON_ERROR_ROLLBACK interactive

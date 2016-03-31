@@ -4,17 +4,32 @@
 
 if [ -z "$*" ]
 then
-	printf "usage: $0 path [[cmd] [arg1] ...]\n\nbreak apart and recursively call directory portions of a path, running [cmd] or 'ls -lhd' if unspecified"; exit 64 # exit status 64 is EX_USAGE
+	printf "usage: $0 [-r|--reverse] path [[cmd] [arg1] ...]\n\nbreak apart and recursively call directory portions of a path, running [cmd] or 'ls -lhd' if unspecified\n\n"; exit 64 # exit status 64 is EX_USAGE
 fi
 
-TREE=`readlink -f $1`
+
+if [ "$1" == "-r" ] || [ "$1" == "--reverse" ]; then
+	shift
+	if command -v tac &>/dev/null; then
+		CAT=tac # reverse cat: comes with coreutils
+	elif command -v gtac &> /dev/null; then
+		CAT=gtac # in case a BSD has coreutils installed
+	else
+		CAT='tail -r' # assuming BSD, if coreutils isn't installed...
+	fi
+else
+	CAT=cat
+fi
+
+TREE=`cd $(dirname "$1"); echo "${PWD}/$(basename $1)"; cd $OLDPWD`
 shift
 CMD=$@
 
 (while [ "$TREE" != "/" ]
 do
-	${CMD:-ls -lhd --} $TREE
-	TREE=`dirname $TREE`
-done)|tac
+	${CMD:-ls -lhd --} "$TREE"
+	TREE=`dirname "$TREE"`
+done)|$CAT # not quoted because -r...
 
 exit 0
+

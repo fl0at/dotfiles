@@ -151,7 +151,8 @@ if [ "$INTERACTIVE" ]; then
 	bind 'set match-hidden-files off' # Don't show dotfiles in tab-tab-completes unless specified. Set here instead of .inputrc, since that would affect readlines in other programs too
 	LC_ALL="en_CA.UTF-8"
 	LANG="en_CA.UTF-8"
-	PS1='\[\e[1m\][\[\e[93m\]\u\[\e[91m\]@\h \[\e[94m\]\w\[\e[00m\]\[\e[1m\]]\$ \[\e[00m\]'
+	#@@@ PS1 is a religious war waiting to happen.
+	#PS1='\[\e[1m\][\[\e[93m\]\u\[\e[91m\]@\h \[\e[94m\]\w\[\e[00m\]\[\e[1m\]]\$ \[\e[00m\]'
 	# TODO: move $PS1 to a (set of) function(s): see rtomayko
 
 	# Default PS1s:

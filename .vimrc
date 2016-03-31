@@ -38,11 +38,18 @@ set scrolloff=1	" minimum lines to keep above and below cursor
 
 if has("autocmd")
 	filetype plugin indent on
-	autocmd FileType html setl sw=4 sts=4 ts=4 et " four-space "tabs" for html
-	autocmd FileType css setl sw=4 sts=4 ts=4 et " four-space "tabs" for css
-	autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0]) " Put cursor at start, instead of 'last location'
+	autocmd FileType html setl sw=4 sts=4 ts=4 et " four-space "tabs" for HTML
+	autocmd FileType css setl sw=4 sts=4 ts=4 et " four-space "tabs" for CSS
+	autocmd FileType javascript setl sw=2 sts=2 ts=2 et " two-space "tabs" for Javascript
+	autocmd FileType ruby setl sw=2 sts=2 ts=2 et " two-space "tabs" for Ruby
+	autocmd FileType yaml setl sw=2 sts=2 ts=2 et " two-space "tabs" for YAML
+	autocmd BufNewFile,BufRead *.md set filetype=markdown " since Modula2 is the default unless it's README.md, normally...
+
+	" When Git commit windows open up, vim might remember its past position. Doesn't make sense, in that case...
+	autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 	autocmd BufRead .git/COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0]) " For older vim versions. Like mine.
 	autocmd BufRead .git/COMMIT_EDITMSG setl textwidth=72 " see README, regarding line lengths. (Not needed for FileType since it's already there!)
+
 	" TODO: portable "file changed while editing" test.
 endif
  
@@ -55,12 +62,18 @@ if &t_Co > 2 || has("gui_running")
 	if has("syntax")
 		syntax on
 	endif
-	set background=dark
 	set hlsearch
-	if &t_Co >= 256
-		silent! colorscheme xoria256 " TODO: or lucius, or jellybeans...
+	set background=dark
+	"@@@ Set default colorschemes for 8-color and 256-color terminals
+	if &diff " because most schemes fall down there... http://stackoverflow.com/questions/2019281/load-different-colorscheme-when-using-vimdiff
+		colorscheme elflord
+	elseif exists("some_plugin_you_like") "@@@ configure to taste :)
+		colorscheme delek
 	else
 		colorscheme desert
+		if &t_Co >= 256
+			silent! colorscheme jellybeans " silent! because it might not exist
+		endif
 	endif
 endif
 
@@ -96,10 +109,11 @@ if has("autocmd") && has("eval")
 		endif
 	endfunction
 
+	"@@@ This is up to taste. You might not even want gutters... much less funny numbering.
 	" Run the Resizer on screen size changes.
 	" TODO: fix split sizes on window resize (Ctrl-W = helps)
-	autocmd VimResized * :call Resizer()
-	call Resizer()
+	"autocmd VimResized * :call Resizer()
+	"call Resizer()
 endif
 
 " Training for hjkl controls.
